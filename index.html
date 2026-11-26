@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas · Personal AI assistant</title>
+<meta name="description" content="A personal AI assistant that follows your instructions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f5bea'/%3E%3Cpath d='M9 23 16 8l7 15M12 18h8' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside id="side" aria-label="Conversations">
+    <button id="newChat" class="primary">New chat</button>
+    <ul id="list"></ul>
+    <button id="openSettings" class="ghost">Settings</button>
+  </aside>
+  <div id="scrim"></div>
+  <main>
+    <header>
+      <button id="menu" class="ghost icon" aria-label="Open conversations">☰</button>
+      <h1 id="title">New chat</h1>
+      <div class="hbtns">
+        <button id="clear" class="ghost">Clear</button>
+        <button id="theme" class="ghost" aria-label="Toggle theme">Theme</button>
+      </div>
+    </header>
+    <section id="msgs" aria-live="polite"></section>
+    <form id="form" autocomplete="off">
+      <div id="chips"></div>
+      <div class="box">
+        <label class="attach" title="Attach files">
+          <input type="file" id="file" multiple hidden accept=".txt,.md,.csv,.json,.js,.ts,.jsx,.tsx,.html,.css,.py,.java,.c,.cpp,.go,.rs,.php,.rb,.sql,.yml,.yaml,.xml,.log,.sh,image/png,image/jpeg,image/webp,image/gif">
+          <span>＋</span>
+        </label>
+        <textarea id="input" rows="1" placeholder="Give Atlas an instruction" maxlength="30000" aria-label="Message"></textarea>
+        <button id="send" class="primary" type="submit">Send</button>
+      </div>
+      <p class="hint">Enter to send, Shift+Enter for a new line. Attach text, code or images. Atlas can make mistakes; check important details.</p>
+    </form>
+  </main>
+</div>
+<dialog id="dlg">
+  <form method="dialog">
+    <h2>Settings</h2>
+    <label>Theme
+      <select id="setTheme"><option value="auto">Match device</option><option value="light">Light</option><option value="dark">Dark</option></select>
+    </label>
+    <label>Standing instructions
+      <textarea id="setInstr" rows="4" maxlength="2000" placeholder="e.g. Answer concisely. I work in Python and write in British English."></textarea>
+    </label>
+    <div class="row">
+      <button type="button" id="delAll" class="danger">Delete all chats</button>
+      <button class="primary" value="ok">Done</button>
+    </div>
+  </form>
+</dialog>
+<div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

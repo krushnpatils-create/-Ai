@@ -1,0 +1,9 @@
+{
+  "name": "atlas-ai-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal AI assistant: static frontend + Netlify Function",
+  "scripts": { "dev": "netlify dev", "test": "node test/chat.test.js" },
+  "engines": { "node": ">=18" },
+  "devDependencies": { "netlify-cli": "^17.0.0" }
+}
